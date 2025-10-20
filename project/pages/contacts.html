@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты — Максим Милютин</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/styles.css">
+  <style>
+    header {
+      background-color: #5e2b97 !important; /* фиолетовый */
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header class="text-center py-4 shadow-sm">
+    <h1>Свяжитесь со мной</h1>
+  </header>
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+      <a href="../index.html" class="navbar-brand">
+        <i class="bi bi-house"></i> На главную
+      </a>
+    </div>
+  </nav>
+  <main class="container my-5">
+    <form id="contactForm" class="card p-4 shadow-sm mb-4"
+          action="https://formspree.io/f/maykdnqw" method="POST">
+      <div class="mb-3">
+        <label class="form-label">Имя</label>
+        <input type="text" name="name" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" name="email" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Сообщение</label>
+        <textarea name="message" rows="3" class="form-control" required></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+    <section class="contact-info card p-4 shadow-sm">
+      <h3 class="mb-3"><i class="bi bi-envelope-fill"></i> Контактная информация</h3>
+      <p>📧 Email: 
+        <a href="mailto:maksim.milutin06@gmail.com" class="text-primary text-decoration-underline">
+          maksim.milutin06@gmail.com
+        </a>
+      </p>
+      <p>🐙 GitHub: 
+        <a href="https://github.com/lutwaffe" target="_blank" class="text-primary text-decoration-underline">
+          github.com/lutwaffe
+        </a>
+      </p>
+    </section>
+
+  </main>
+  <footer class="footer bg-dark text-white text-center py-3 mt-5">
+    <p>&copy; 2025 Максим Милютин — 
+      <a href="https://github.com/lutwaffe" target="_blank" class="text-white text-decoration-underline">
+        GitHub/lutwaffe
+      </a>
+    </p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const form = document.getElementById('contactForm');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          alert('Спасибо! Ваше сообщение отправлено.');
+          form.reset();
+        } else {
+          alert('Ошибка при отправке. Попробуйте позже.');
+        }
+      } catch (error) {
+        alert('Ошибка при отправке. Попробуйте позже.');
+      }
+    });
+  </script>
+</body>
+</html>
