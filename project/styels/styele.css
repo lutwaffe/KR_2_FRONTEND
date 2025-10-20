@@ -1,0 +1,30 @@
+:root {
+  --primary-color: #8f1566;
+  --text-color: #2c3e50;
+}
+body {
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background-color: #f8f9fa;
+  color: var(--text-color);
+}
+
+a { text-decoration: none; }
+
+.profile__photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary-color);
+}
+
+dialog {
+  border: none;
+  max-width: 400px;
+  width: 90%;
+}
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.progress { height: 8px; }
